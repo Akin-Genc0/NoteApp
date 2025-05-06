@@ -12,6 +12,7 @@ if( title.value === "" || note.value === "" ){
 }
 return true;
 }
+    
 
 
 
@@ -19,22 +20,30 @@ saveBtn.addEventListener('click', function() {
 
 if(!vaild()) return;
 
+
 //saves notes body content
 const noteBody = document.createElement('div');
 const BodyContent = document.createTextNode(note.value);
 noteBody.appendChild(BodyContent);
 
 
- //viewButton
+ //view Button
  const viewBtn = document.createElement('BUTTON');
  viewBtn.textContent = "View Notes";
+
+
+
+//delete button
+const delBtn = document.createElement('BUTTON');
+delBtn.textContent = "delete";
+
 
 //save title content
  const noteTitle = document.createElement('div');
  const titleContent = document.createTextNode(title.value);
  noteTitle.appendChild(titleContent);
  noteTitle.appendChild(viewBtn);
-
+ noteTitle.appendChild(delBtn);
 
 //stores in div
 const currentDiv = document.getElementById("div1");
@@ -57,17 +66,25 @@ noteBody.style.display = "none";
 
 //view button
 viewBtn.addEventListener('click', function(e) { 
-    
-    
     e.stopPropagation();
 
     noteBody.style.display === "none" 
     ? noteBody.style.display = "block" : noteBody.style.display = "none";
-
  
-    
 });
 
 
-
+//del button
+delBtn.addEventListener('click', function() { 
+     
+    noteTitle.remove();
+    noteBody.remove();
+  
 });
+
+}); 
+
+
+
+
+
