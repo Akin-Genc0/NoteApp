@@ -15,11 +15,9 @@ return true;
 
 
 
-
-
 saveBtn.addEventListener('click', function() {
 
-
+if(!vaild()) return;
 
 //saves notes body content
 const noteBody = document.createElement('div');
@@ -43,7 +41,7 @@ const currentDiv = document.getElementById("div1");
 document.body.insertBefore(noteTitle, currentDiv);
 
 //stores in div
-const noteContent = document.getElementById(".n");
+const noteContent = document.getElementById("n");
 document.body.insertBefore(noteBody,  noteContent);
 
 
@@ -63,10 +61,11 @@ viewBtn.addEventListener('click', function(e) {
     
     e.stopPropagation();
 
-    noteBody.style.display = "block";
+    noteBody.style.display === "none" 
+    ? noteBody.style.display = "block" : noteBody.style.display = "none";
 
+ 
     
-
 });
 
 
